@@ -351,6 +351,11 @@ li {
   color:var(--sage)
 }
 .footer {
+  position:absolute;
+  left:13mm;
+  right:13mm;
+  bottom:11mm;
+  z-index:2;
   display:flex;
   justify-content:space-between;
   color:var(--muted);
@@ -373,6 +378,10 @@ li {
 .cover {
   min-height:0;
   gap:18mm
+}
+.footer {
+  position:static;
+  margin-top:4mm;
 }
 .two,.three {
   grid-template-columns:1fr

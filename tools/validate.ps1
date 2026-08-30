@@ -23,9 +23,11 @@ $images = Count-Matches $html '<img\b|<svg\b'
 $imports = Count-Matches $html '@import|https?://|//[^/\s]+'
 $debug = Count-Matches $html 'console\.log|var_dump|debugger'
 $tocLinks = Count-Matches $html '<a href="#s\d+">'
+$footerChildren = Count-Matches $html '</div>\s*<div class="footer">'
 if ($sections -ne 13) { throw "Expected 13 sections, found $sections." }
 if ($h2 -ne 12) { throw "Expected 12 h2 headings, found $h2." }
 if ($footers -ne $sections) { throw "Footer count ($footers) differs from section count ($sections)." }
+if ($footerChildren -ne $sections) { throw "Footer placement is invalid: expected one footer after each content container, found $footerChildren." }
 if ($images -ne 0) { throw "Images or SVG found: $images." }
 if ($imports -ne 0) { throw "External imports or URLs found: $imports." }
 if ($debug -ne 0) { throw "Debug statements found: $debug." }

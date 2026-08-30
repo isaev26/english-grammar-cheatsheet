@@ -39,9 +39,11 @@ foreach ($file in $sectionFiles) {
 
     $body = $match.Groups['body'].Value.Trim()
     $footer = '<div class="footer"><span>Grammar reference</span><span class="footer-page">00 / 00</span></div>'
-    $lastContentClose = $body.LastIndexOf('</div>')
-    if ($lastContentClose -lt 0) { throw "Content container not found in $($file.Name)." }
-    $body = $body.Insert($lastContentClose, $footer)
+    if ($body -notmatch '(?s)</div>\s*$') { throw "Content container not found in $($file.Name)." }
+    if (([regex]::Matches($body, '<div\b')).Count -ne ([regex]::Matches($body, '</div>')).Count) {
+        throw "Unbalanced div elements in $($file.Name)."
+    }
+    $body = $body + $footer
     $sections += [pscustomobject]@{
         Order = [int]$orderMatch.Groups['order'].Value
         Id = $idMatch.Groups['id'].Value
