@@ -1,0 +1,11 @@
+materials/
+files/
+photos/
+voice_messages/
+ocr_results.json
+result.json
+tools/temp/
+tools/browser-profile/
+tools/screenshots/
+*.tmp
+*.log
