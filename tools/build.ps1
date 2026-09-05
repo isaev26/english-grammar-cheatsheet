@@ -33,8 +33,9 @@ foreach ($file in $sectionFiles) {
     $orderMatch = [regex]::Match($match.Groups['attrs'].Value, 'data-order="(?<order>\d+)"')
     $titleMatch = [regex]::Match($match.Groups['attrs'].Value, 'data-title="(?<title>[^"]+)"')
     $idMatch = [regex]::Match($match.Groups['attrs'].Value, 'id="(?<id>s\d+)"')
-    if (-not $orderMatch.Success -or -not $titleMatch.Success -or -not $idMatch.Success) {
-        throw "Section $($file.Name) must have data-order, data-title and id."
+    $slugMatch = [regex]::Match($match.Groups['attrs'].Value, 'data-slug="(?<slug>[^"]+)"')
+    if (-not $orderMatch.Success -or -not $titleMatch.Success -or -not $idMatch.Success -or -not $slugMatch.Success) {
+        throw "Section $($file.Name) must have data-order, data-title, id and data-slug."
     }
 
     $body = $match.Groups['body'].Value.Trim()
@@ -47,6 +48,7 @@ foreach ($file in $sectionFiles) {
     $sections += [pscustomobject]@{
         Order = [int]$orderMatch.Groups['order'].Value
         Id = $idMatch.Groups['id'].Value
+        Slug = $slugMatch.Groups['slug'].Value
         Title = [System.Net.WebUtility]::HtmlDecode($titleMatch.Groups['title'].Value)
         Markup = '<section' + $match.Groups['attrs'].Value + '>' + $body + '</section>'
     }
@@ -68,7 +70,7 @@ for ($index = 0; $index -lt $sections.Count; $index++) {
     $section = $sections[$index]
     $page = '{0:00} / {1:00}' -f ($index + 1), $total
     $section.Markup = $section.Markup.Replace('00 / 00', $page)
-    if ($section.Order -eq 8) {
+    if ($section.Slug -eq 'additional-grammar') {
         $section.Markup = $section.Markup.Replace('class="sheet page-break"', 'class="sheet page-break dense-print"')
     }
 }

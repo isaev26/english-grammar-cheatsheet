@@ -25,15 +25,16 @@ D:\vsprojects\ChatExport_2026-08-21\src\sections\00-cover.html
 D:\vsprojects\ChatExport_2026-08-21\src\sections\01-sentence-frame.html
 D:\vsprojects\ChatExport_2026-08-21\src\sections\02-to-be.html
 D:\vsprojects\ChatExport_2026-08-21\src\sections\03-tenses.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\04-verb-forms.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\05-articles-quantity.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\06-prepositions.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\07-used-to-modals.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\08-additional-grammar.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\09-tenses-table.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\10-choice-tree.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\11-adverbs.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\12-compact-grammar.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\04-tense-signals.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\05-verb-forms.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\06-articles-quantity.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\07-prepositions.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\08-used-to-modals.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\09-additional-grammar.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\10-tenses-table.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\11-choice-tree.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\12-adverbs.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\13-compact-grammar.html
 ```
 
 Сборка и проверки:
@@ -128,11 +129,12 @@ D:\vsprojects\ChatExport_2026-08-21\materials\
 - `have got`;
 - `like / love / hate + V-ing`;
 - повелительное наклонение;
+- триггеры-сигналы времён и сигналы-ловушки;
 - таблица времён, алгоритм выбора формы и компактная итоговая таблица.
 
 ### Правило `used to`
 
-Полный самостоятельный блок `used to` находится только в `src\sections\07-used-to-modals.html`. В других разделах допустимы только короткие перекрёстные ссылки без повторения правила.
+Полный самостоятельный блок `used to` находится только в `src\sections\08-used-to-modals.html`. В других разделах допустимы только короткие перекрёстные ссылки без повторения правила.
 
 ## 5. Запрещённое содержание и ресурсы
 
@@ -190,11 +192,11 @@ Set-Location 'D:\vsprojects\ChatExport_2026-08-21'
 `tools\validate.ps1` должен проверять:
 
 - наличие и непустое содержимое итогового HTML;
-- 13 секций, 12 нумерованных `h2` и footer для каждой секции;
-- уникальные `id`, порядок и наличие секций `s1`–`s12`;
+- 14 секций, 13 нумерованных `h2` и footer для каждой секции;
+- уникальные `id`, порядок и наличие секций `s1`–`s13`;
 - отсутствие изображений и SVG;
 - отсутствие `@import`, внешних URL и отладочного кода;
-- отсутствие самостоятельного `used to` после раздела 7;
+- отсутствие самостоятельного `used to` в разделе предлогов (`data-slug="prepositions"`);
 - наличие PDF и корректного PDF-заголовка;
 - наличие объектов страниц и текстового слоя PDF;
 - отсутствие запрещённых слов и тем в PDF.
