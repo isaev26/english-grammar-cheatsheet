@@ -35,6 +35,7 @@ D:\vsprojects\ChatExport_2026-08-21\src\sections\10-tenses-table.html
 D:\vsprojects\ChatExport_2026-08-21\src\sections\11-choice-tree.html
 D:\vsprojects\ChatExport_2026-08-21\src\sections\12-adverbs.html
 D:\vsprojects\ChatExport_2026-08-21\src\sections\13-compact-grammar.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\14-reference-grammar.html
 ```
 
 Сборка и проверки:
@@ -120,7 +121,10 @@ D:\vsprojects\ChatExport_2026-08-21\materials\
 - формы глагола `V1 / V2 / V3 / V-ing` и неправильные глаголы;
 - артикли, `some / any / much / many`;
 - `there is / there are`;
+- `this / that / these / those`, `here / there`;
+- `how much / how many`;
 - предлоги времени и движения;
+- наречия движения;
 - `used to`, `be used to / get used to`;
 - модальные глаголы;
 - наречия частотности и образа действия;
@@ -128,6 +132,7 @@ D:\vsprojects\ChatExport_2026-08-21\materials\
 - притяжательный падеж и `W/H-questions`;
 - `have got`;
 - `like / love / hate + V-ing`;
+- выбор `-ing` или `to + V1` после основных глаголов;
 - повелительное наклонение;
 - триггеры-сигналы времён и сигналы-ловушки;
 - таблица времён, алгоритм выбора формы и компактная итоговая таблица.
@@ -192,8 +197,8 @@ Set-Location 'D:\vsprojects\ChatExport_2026-08-21'
 `tools\validate.ps1` должен проверять:
 
 - наличие и непустое содержимое итогового HTML;
-- 14 секций, 13 нумерованных `h2` и footer для каждой секции;
-- уникальные `id`, порядок и наличие секций `s1`–`s13`;
+- 15 секций, 14 нумерованных `h2` и footer для каждой секции;
+- уникальные `id`, порядок и наличие секций `s1`–`s14`;
 - отсутствие изображений и SVG;
 - отсутствие `@import`, внешних URL и отладочного кода;
 - отсутствие самостоятельного `used to` в разделе предлогов (`data-slug="prepositions"`);
