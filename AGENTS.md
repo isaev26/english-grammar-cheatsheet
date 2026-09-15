@@ -1,22 +1,22 @@
-# Правила ИИ для проекта English Cheatsheet
+# AI Guidelines for the English Cheatsheet Project
 
-## 1. Назначение
+## 1. Purpose
 
-Проект содержит компактную грамматическую шпаргалку по английскому языку на русском языке для уровня A1–A2.
+This project contains a compact English grammar cheatsheet in Russian for A1–A2 learners.
 
-Главные требования:
+Main requirements:
 
-- объяснять грамматику кратко и структурно;
-- использовать формулы, таблицы и короткие примеры;
-- сохранять читаемую печатную версию PDF;
-- не добавлять материал, не относящийся к грамматике;
-- редактировать исходные секции, а не сгенерированные файлы.
+- explain grammar briefly and structurally;
+- use formulas, tables, and short examples;
+- preserve a readable print-ready PDF;
+- do not add material unrelated to grammar;
+- edit source sections rather than generated files.
 
-Общаться с владельцем проекта на русском языке. Все пути в командах и сообщениях указывать абсолютными.
+Communicate with the project owner in Russian. Use absolute paths in all commands and messages.
 
-## 2. Структура проекта
+## 2. Project structure
 
-Исходники:
+Source files:
 
 ```text
 D:\vsprojects\ChatExport_2026-08-21\src\template.html
@@ -38,33 +38,33 @@ D:\vsprojects\ChatExport_2026-08-21\src\sections\13-compact-grammar.html
 D:\vsprojects\ChatExport_2026-08-21\src\sections\14-reference-grammar.html
 ```
 
-Сборка и проверки:
+Build and validation scripts:
 
 ```text
 D:\vsprojects\ChatExport_2026-08-21\tools\build.ps1
 D:\vsprojects\ChatExport_2026-08-21\tools\validate.ps1
 ```
 
-Результаты сборки:
+Generated outputs:
 
 ```text
 D:\vsprojects\ChatExport_2026-08-21\english_cheatsheet.html
 D:\vsprojects\ChatExport_2026-08-21\english_cheatsheet.pdf
 ```
 
-`english_cheatsheet.html` и `english_cheatsheet.pdf` генерируются автоматически. Не редактировать их вручную: изменения вносить в `src` и затем запускать сборку.
+`english_cheatsheet.html` and `english_cheatsheet.pdf` are generated automatically. Never edit them manually; make changes in `src` and run the build afterwards.
 
-Исходные изображения, OCR и экспорт чата хранятся отдельно и не являются содержимым шпаргалки:
+Source images, OCR data, and chat exports are stored separately and are not part of the cheatsheet content:
 
 ```text
 D:\vsprojects\ChatExport_2026-08-21\materials\
 ```
 
-Если каталог `materials` ещё не создан, не переносить туда файлы без необходимости и не анализировать `result.json`, `ocr_results.json`, `files`, `photos` или `voice_messages` при обычной правке шпаргалки.
+If the `materials` directory does not exist, do not create or populate it without a specific need. Do not inspect `result.json`, `ocr_results.json`, `files`, `photos`, or `voice_messages` during ordinary cheatsheet edits.
 
-## 3. Формат секции
+## 3. Section format
 
-Каждый файл в `src\sections` содержит ровно один самостоятельный `<section>` и имеет метаданные:
+Each file in `src\sections` must contain exactly one independent `<section>` with metadata:
 
 ```html
 <section
@@ -72,7 +72,7 @@ D:\vsprojects\ChatExport_2026-08-21\materials\
   id="s6"
   data-order="6"
   data-slug="prepositions"
-  data-title="6. Пространство и время"
+  data-title="6. Space and time"
 >
   <div class="content">
     ...
@@ -80,151 +80,151 @@ D:\vsprojects\ChatExport_2026-08-21\materials\
 </section>
 ```
 
-Правила:
+Rules:
 
-- `data-order` — уникальный числовой порядок; обложка имеет `0`;
-- `id` — уникальный идентификатор вида `s0`, `s1` и т. д.;
-- `data-slug` — стабильный англоязычный идентификатор файла и темы;
-- `data-title` — заголовок для оглавления;
-- обычные разделы содержат один нумерованный `<h2>`;
-- порядок файлов должен соответствовать `data-order`;
-- footer не добавлять вручную: его вставляет `tools\build.ps1`;
-- оглавление не редактировать вручную: его генерирует сборщик.
+- `data-order` is a unique numeric order; the cover uses `0`;
+- `id` is a unique identifier in the form `s0`, `s1`, and so on;
+- `data-slug` is a stable English identifier for the file and topic;
+- `data-title` is the title used in the table of contents;
+- regular sections contain one numbered `<h2>`;
+- file order must match `data-order`;
+- do not add footers manually: `tools\build.ps1` inserts them;
+- do not edit the table of contents manually: the build script generates it.
 
-Имя файла должно соответствовать шаблону `<order:02>-<slug>.html`. Для нового раздела добавляется новый файл с уникальными `data-order`, `id` и `data-slug`.
+File names must follow the `<order:02>-<slug>.html` pattern. A new section requires a unique `data-order`, `id`, and `data-slug`.
 
-Тему лучше оформлять отдельным блоком:
+Prefer structuring a topic as a separate block:
 
 ```html
 <article class="card" data-topic="topic-slug">
-  <h3>Название темы</h3>
-  <p class="rule">Краткое правило.</p>
+  <h3>Topic name</h3>
+  <p class="rule">Short rule.</p>
   <div class="formula">SUBJECT + VERB + OBJECT</div>
   <div class="ex">
     <span class="en">I watch a film.</span><br>
     <span class="ru">Я смотрю фильм.</span>
   </div>
-  <div class="note"><strong>Типичная ошибка:</strong> Короткое пояснение.</div>
+  <div class="note"><strong>Common mistake:</strong> Short explanation.</div>
 </article>
 ```
 
-`data-topic` должен быть стабильным и уникальным внутри проекта. Не создавать отдельный файл для каждого маленького `formula`, `ex` или `note`.
+`data-topic` must be stable and unique within the project. Do not create a separate file for each small `formula`, `ex`, or `note` block.
 
-## 4. Допустимое содержание
+## 4. Allowed content
 
-Разрешены только следующие темы:
+Only the following topics are allowed:
 
-- порядок слов и части речи;
-- `to be`, вопросы и отрицания;
+- word order and parts of speech;
+- `to be`, questions, and negations;
 - Present Simple, Present Continuous, Past Simple, Present Perfect;
-- Future `will` и `be going to`;
-- формы глагола `V1 / V2 / V3 / V-ing` и неправильные глаголы;
-- артикли, `some / any / much / many`;
+- future `will` and `be going to`;
+- verb forms `V1 / V2 / V3 / V-ing` and irregular verbs;
+- articles, `some / any / much / many`;
 - `there is / there are`;
 - `this / that / these / those`, `here / there`;
 - `how much / how many`;
-- предлоги времени и движения;
-- наречия движения;
+- prepositions of time and movement;
+- movement adverbs;
 - `used to`, `be used to / get used to`;
-- модальные глаголы;
-- наречия частотности и образа действия;
-- сравнительная и превосходная степени, `as ... as`;
-- притяжательный падеж и `W/H-questions`;
+- modal verbs;
+- adverbs of frequency and manner;
+- comparative and superlative forms, `as ... as`;
+- possessive case and `W/H-questions`;
 - `have got`;
 - `like / love / hate + V-ing`;
-- выбор `-ing` или `to + V1` после основных глаголов;
-- повелительное наклонение;
-- триггеры-сигналы времён и сигналы-ловушки;
-- таблица времён, алгоритм выбора формы и компактная итоговая таблица.
+- choosing `-ing` or `to + V1` after common verbs;
+- imperatives;
+- tense signal words and misleading signals;
+- tense tables, form-selection algorithms, and compact summary tables.
 
-### Правило `used to`
+### `used to` rule
 
-Полный самостоятельный блок `used to` находится только в `src\sections\08-used-to-modals.html`. В других разделах допустимы только короткие перекрёстные ссылки без повторения правила.
+The complete standalone `used to` block exists only in `src\sections\08-used-to-modals.html`. Other sections may contain only short cross-references without repeating the rule.
 
-## 5. Запрещённое содержание и ресурсы
+## 5. Forbidden content and resources
 
-Не добавлять:
+Do not add:
 
-- travel-блоки, рассказы, reading, story, pronunciation и vocabulary;
-- тематическую лексику, списки слов, упражнения, диалоги и задания, не нужные для объяснения правила;
-- изображения, `<img>`, декоративные SVG и внешние шрифты;
-- внешние CSS/JS-ресурсы, CDN, Google Fonts и HTTP-запросы;
-- `console.log`, `var_dump`, `debugger` и временные отладочные вставки.
+- travel blocks, stories, reading, pronunciation, or vocabulary;
+- thematic vocabulary, word lists, exercises, dialogues, or tasks that are not needed to explain a grammar rule;
+- images, `<img>`, decorative SVG, or external fonts;
+- external CSS/JS resources, CDNs, Google Fonts, or HTTP requests;
+- `console.log`, `var_dump`, `debugger`, or temporary debugging code.
 
-Перед завершением проверять не только HTML, но и итоговый PDF.
+Before finishing, check both the generated HTML and the final PDF.
 
-## 6. Стиль и печать
+## 6. Style and printing
 
-Текст должен быть кратким, прикладным и рассчитанным на A1–A2. Предпочтительный порядок блока: правило → формула → 2–4 примера → типичная ошибка или ограничение.
+Text must be concise, practical, and suitable for A1–A2 learners. The preferred block order is: rule → formula → 2–4 examples → common mistake or limitation.
 
-CSS хранится в `src\styles\cheatsheet.css`. Не менять глобальные размеры и печатные правила ради одной темы. Для переполнения использовать локальный класс секции, особенно осторожно менять секции 6 и 8.
+CSS is stored in `src\styles\cheatsheet.css`. Do not change global dimensions or print rules for a single topic. For overflow, use a local section class and be especially careful with sections 6 and 8.
 
-Сохранять:
+Preserve:
 
-- формат A4 landscape;
-- отдельную страницу для обложки и каждого раздела;
-- `.sheet`, `.page-break`, `.content`, `.footer` и существующие компонентные классы;
-- текстовый слой PDF;
-- читаемость таблиц, формул и footer.
+- A4 landscape format;
+- a separate page for the cover and every section;
+- `.sheet`, `.page-break`, `.content`, `.footer`, and existing component classes;
+- the PDF text layer;
+- readable tables, formulas, and footers.
 
-Не уменьшать глобальный шрифт без необходимости. Если объём увеличился, сначала убрать повторение и уплотнить только затронутый раздел, затем добавить страницу с корректным footer.
+Do not reduce the global font size without a clear need. If the content grows, first remove repetition and compact only the affected section, then add a page with a correct footer if necessary.
 
-## 7. Рабочий процесс изменения
+## 7. Change workflow
 
-1. Найти конкретный файл секции по `data-slug` или `data-topic`.
-2. Проверить, не раскрыта ли тема уже в другом разделе.
-3. Изменить только исходный файл секции и при необходимости локальный CSS.
-4. Выполнить сборку:
+1. Find the specific section file by `data-slug` or `data-topic`.
+2. Check whether the topic is already covered elsewhere.
+3. Edit only the source section and, if necessary, local CSS.
+4. Run the build:
 
 ```powershell
 Set-Location 'D:\vsprojects\ChatExport_2026-08-21'
 & '.\tools\build.ps1' -Pdf
 ```
 
-5. Сборщик сначала создаёт HTML, валидирует его, затем собирает PDF во временном каталоге и заменяет PDF только после успешной сборки.
-6. При необходимости отдельно запустить:
+5. The build script first generates and validates the HTML, then creates the PDF in a temporary directory and replaces the PDF only after a successful build.
+6. If needed, run validation separately:
 
 ```powershell
 & '.\tools\validate.ps1'
 ```
 
-7. Проверить Git diff и не включать в коммит временные файлы, OCR, медиа и исходный экспорт чата.
+7. Check the Git diff. Do not include temporary files, OCR, media, or the original chat export in a commit.
 
-При нечитаемом или неоднозначном исходном изображении не додумывать содержание — запросить уточнение конкретного места.
+If a source image is unreadable or ambiguous, do not guess its contents; ask for clarification about the specific location.
 
-## 8. Обязательная автоматическая проверка
+## 8. Required automated validation
 
-`tools\validate.ps1` должен проверять:
+`tools\validate.ps1` must check:
 
-- наличие и непустое содержимое итогового HTML;
-- 15 секций, 14 нумерованных `h2` и footer для каждой секции;
-- уникальные `id`, порядок и наличие секций `s1`–`s14`;
-- отсутствие изображений и SVG;
-- отсутствие `@import`, внешних URL и отладочного кода;
-- отсутствие самостоятельного `used to` в разделе предлогов (`data-slug="prepositions"`);
-- наличие PDF и корректного PDF-заголовка;
-- наличие объектов страниц и текстового слоя PDF;
-- отсутствие запрещённых слов и тем в PDF.
+- that the final HTML exists and is not empty;
+- 15 sections, 14 numbered `h2` headings, and one footer for each section;
+- unique IDs, correct order, and the presence of sections `s1`–`s14`;
+- no images or SVG;
+- no `@import`, external URLs, or debugging code;
+- no standalone `used to` rule in the prepositions section (`data-slug="prepositions"`);
+- the presence of a valid PDF with a correct PDF header;
+- PDF page objects and a text layer;
+- no forbidden words or topics in the PDF.
 
-Проверка должна завершаться ошибкой при нарушении любого обязательного условия. Ошибки сборки и проверки не скрывать.
+Validation must fail for any required-condition violation. Do not hide build or validation errors.
 
-## 9. PDF и временные файлы
+## 9. PDF and temporary files
 
-PDF собирать headless Chrome или Edge через `tools\build.ps1 -Pdf`. Временный профиль браузера и временный PDF создаются только в каталоге `%TEMP%` и удаляются в блоке `finally`.
+Build the PDF with headless Chrome or Edge through `tools\build.ps1 -Pdf`. The temporary browser profile and temporary PDF must be created only under `%TEMP%` and removed in the `finally` block.
 
-Не оставлять в проекте:
+Do not leave these files in the project:
 
-- временные PDF, HTML, профили браузера, скриншоты и логи;
-- промежуточные файлы сборки;
-- ручные старые footer-фрагменты.
+- temporary PDF, HTML, browser profiles, screenshots, or logs;
+- intermediate build files;
+- manually added old footer fragments.
 
-Если PDF не собрался, не заменять предыдущий корректный PDF и сообщить точную причину.
+If the PDF build fails, do not replace the previous valid PDF and report the exact reason.
 
 ## 10. Git
 
-Проект использует Git. Перед крупной перестройкой сохранить рабочее состояние отдельным коммитом. В коммиты включать исходники `src`, `tools`, `AGENTS.md`, `.gitignore` и сгенерированные итоговые файлы только после успешной проверки.
+The project uses Git. Before a major restructuring, preserve the current working state in a separate commit. Commits may include `src`, `tools`, `AGENTS.md`, `.gitignore`, and generated final outputs only after successful validation.
 
-Рекомендуемые сообщения коммитов:
+Recommended commit messages:
 
 ```text
 baseline: current English cheatsheet
@@ -233,17 +233,17 @@ build: add HTML and PDF validation
 content: update grammar section
 ```
 
-Проверять `git status --short` перед завершением и не коммитить секреты, медиа, OCR и временные файлы.
+Check `git status --short` before finishing. Never commit secrets, media, OCR data, chat exports, or temporary files.
 
-## 11. Финальный отчёт
+## 11. Final report
 
-После работы сообщить:
+After completing the work, report:
 
-1. изменённые файлы;
-2. что изменено;
-3. результат сборки PDF;
-4. количество страниц PDF;
-5. количество изображений;
-6. результат проверки запрещённого содержания;
-7. наличие или отсутствие временных файлов;
-8. Git-коммит или известные ограничения.
+1. changed files;
+2. what was changed;
+3. the PDF build result;
+4. the number of PDF pages;
+5. the number of images;
+6. the forbidden-content validation result;
+7. whether temporary files remain;
+8. the Git commit or known limitations.
