@@ -1,9 +1,24 @@
+# Private chat exports, OCR and media
 materials/
 files/
 photos/
 voice_messages/
-ocr_results.json
 result.json
+ocr_results.json
+export.json
+exports/
+chats/
+messages/
+conversations/
+media/
+audio/
+
+# Private/local notes and editor backups
+*.private
+*.secret
+*.bak
+
+# Build and temporary files
 tools/temp/
 tools/browser-profile/
 tools/screenshots/
