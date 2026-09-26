@@ -31,11 +31,13 @@ D:\vsprojects\ChatExport_2026-08-21\src\sections\06-articles-quantity.html
 D:\vsprojects\ChatExport_2026-08-21\src\sections\07-prepositions.html
 D:\vsprojects\ChatExport_2026-08-21\src\sections\08-used-to-modals.html
 D:\vsprojects\ChatExport_2026-08-21\src\sections\09-additional-grammar.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\10-tenses-table.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\11-choice-tree.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\12-adverbs.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\13-compact-grammar.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\14-reference-grammar.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\10-wh-questions.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\11-tenses-table.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\12-choice-tree.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\13-adverbs.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\14-compact-grammar.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\15-reference-grammar.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\16-verb-preposition-patterns.html
 ```
 
 Build and validation scripts:
@@ -162,12 +164,12 @@ CSS is stored in `src\styles\cheatsheet.css`. Do not change global dimensions or
 Preserve:
 
 - A4 landscape format;
-- a separate page for the cover and every section;
+- exactly one separate page for the cover and every section; no section may overflow onto another page;
 - `.sheet`, `.page-break`, `.content`, `.footer`, and existing component classes;
 - the PDF text layer;
 - readable tables, formulas, and footers.
 
-Do not reduce the global font size without a clear need. If the content grows, first remove repetition and compact only the affected section, then add a page with a correct footer if necessary.
+Do not reduce the global font size without a clear need. If a section does not fit on one page, remove repetition and compact that section; if it still does not fit, move a complete grammar topic to a new independently numbered section and page with a correct footer. Never leave a continuation-only page.
 
 ## 7. Change workflow
 
@@ -197,8 +199,8 @@ If a source image is unreadable or ambiguous, do not guess its contents; ask for
 `tools\validate.ps1` must check:
 
 - that the final HTML exists and is not empty;
-- 15 sections, 14 numbered `h2` headings, and one footer for each section;
-- unique IDs, correct order, and the presence of sections `s1`–`s14`;
+- 17 sections, 16 numbered `h2` headings, and one footer for each section;
+- unique IDs, correct order, and the presence of sections `s1`–`s16`;
 - no images or SVG;
 - no `@import`, external URLs, or debugging code;
 - no standalone `used to` rule in the prepositions section (`data-slug="prepositions"`);

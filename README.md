@@ -19,7 +19,7 @@ Personal English grammar reference for A1–A2 learners. The cheatsheet uses sho
 - adverbs of frequency and manner;
 - compact tense tables and a form-selection checklist.
 
-The current PDF contains 15 A4 landscape pages, including the cover.
+The current PDF contains 17 A4 landscape pages, including the cover.
 
 ## Project structure
 

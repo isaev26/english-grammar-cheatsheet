@@ -24,18 +24,18 @@ $imports = Count-Matches $html '@import|https?://|//[^/\s]+'
 $debug = Count-Matches $html 'console\.log|var_dump|debugger'
 $tocLinks = Count-Matches $html '<a href="#s\d+">'
 $footerChildren = Count-Matches $html '</div>\s*<div class="footer">'
-if ($sections -ne 15) { throw "Expected 15 sections, found $sections." }
-if ($h2 -ne 14) { throw "Expected 14 h2 headings, found $h2." }
+if ($sections -ne 17) { throw "Expected 17 sections, found $sections." }
+if ($h2 -ne 16) { throw "Expected 16 h2 headings, found $h2." }
 if ($footers -ne $sections) { throw "Footer count ($footers) differs from section count ($sections)." }
 if ($footerChildren -ne $sections) { throw "Footer placement is invalid: expected one footer after each content container, found $footerChildren." }
 if ($images -ne 0) { throw "Images or SVG found: $images." }
 if ($imports -ne 0) { throw "External imports or URLs found: $imports." }
 if ($debug -ne 0) { throw "Debug statements found: $debug." }
-if ($tocLinks -ne 14) { throw "Expected 14 TOC links, found $tocLinks." }
+if ($tocLinks -ne 16) { throw "Expected 16 TOC links, found $tocLinks." }
 $prepositions = [regex]::Match($html, '(?is)<section\b[^>]*data-slug="prepositions"[^>]*>.*?</section>')
 if (-not $prepositions.Success) { throw 'Prepositions section not found.' }
 if ($prepositions.Value -match '(?i)used\s+to') { throw 'used to must not be in the prepositions section.' }
-foreach ($id in 1..14) {
+foreach ($id in 1..16) {
     if ($html -notmatch ('id="s{0}"' -f $id)) { throw "Section id s$id not found." }
 }
 
@@ -48,7 +48,7 @@ if (-not $HtmlOnly) {
     $pdfText = [Text.Encoding]::GetEncoding(1252).GetString($pdfBytes)
     $pageObjects = ([regex]::Matches($pdfText, '/Type\s*/Page(?!s)')).Count
     $imageObjects = ([regex]::Matches($pdfText, '/Subtype\s*/Image')).Count
-    if ($pageObjects -lt $sections) { throw "PDF page count ($pageObjects) is less than section count ($sections)." }
+    if ($pageObjects -ne $sections) { throw "PDF page count ($pageObjects) differs from section count ($sections); each section must occupy exactly one page." }
     if ($imageObjects -ne 0) { throw "Images found in PDF: $imageObjects." }
     if ($pdfText -match '(?i)travel|pronunciation|vocabulary|\breading\b|\bstory\b') { throw 'Forbidden content found in PDF.' }
     Write-Output "PDF OK: bytes=$($pdfBytes.Length), pages=$pageObjects, images=$imageObjects"
