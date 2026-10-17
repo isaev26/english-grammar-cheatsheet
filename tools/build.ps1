@@ -70,9 +70,6 @@ for ($index = 0; $index -lt $sections.Count; $index++) {
     $section = $sections[$index]
     $page = '{0:00} / {1:00}' -f ($index + 1), $total
     $section.Markup = $section.Markup.Replace('00 / 00', $page)
-    if ($section.Slug -eq 'additional-grammar') {
-        $section.Markup = $section.Markup.Replace('class="sheet page-break"', 'class="sheet page-break dense-print"')
-    }
 }
 
 $template = Read-Utf8 $templatePath
