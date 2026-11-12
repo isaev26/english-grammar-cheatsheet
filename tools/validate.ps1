@@ -24,18 +24,18 @@ $imports = Count-Matches $html '@import|https?://|//[^/\s]+'
 $debug = Count-Matches $html 'console\.log|var_dump|debugger'
 $tocLinks = Count-Matches $html '<a href="#s\d+">'
 $footerChildren = Count-Matches $html '</div>\s*<div class="footer">'
-if ($sections -ne 18) { throw "Expected 18 sections, found $sections." }
-if ($h2 -ne 17) { throw "Expected 17 h2 headings, found $h2." }
+if ($sections -ne 19) { throw "Expected 19 sections, found $sections." }
+if ($h2 -ne 18) { throw "Expected 18 h2 headings, found $h2." }
 if ($footers -ne $sections) { throw "Footer count ($footers) differs from section count ($sections)." }
 if ($footerChildren -ne $sections) { throw "Footer placement is invalid: expected one footer after each content container, found $footerChildren." }
 if ($images -ne 0) { throw "Images or SVG found: $images." }
 if ($imports -ne 0) { throw "External imports or URLs found: $imports." }
 if ($debug -ne 0) { throw "Debug statements found: $debug." }
-if ($tocLinks -ne 17) { throw "Expected 17 TOC links, found $tocLinks." }
+if ($tocLinks -ne 18) { throw "Expected 18 TOC links, found $tocLinks." }
 $prepositions = [regex]::Match($html, '(?is)<section\b[^>]*data-slug="prepositions"[^>]*>.*?</section>')
 if (-not $prepositions.Success) { throw 'Prepositions section not found.' }
 if ($prepositions.Value -match '(?i)used\s+to') { throw 'used to must not be in the prepositions section.' }
-foreach ($id in 1..17) {
+foreach ($id in 1..18) {
     if ($html -notmatch ('id="s{0}"' -f $id)) { throw "Section id s$id not found." }
 }
 

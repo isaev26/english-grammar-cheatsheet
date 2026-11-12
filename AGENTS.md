@@ -26,22 +26,23 @@ D:\vsprojects\ChatExport_2026-08-21\src\sections\01-sentence-frame.html
 D:\vsprojects\ChatExport_2026-08-21\src\sections\02-to-be.html
 D:\vsprojects\ChatExport_2026-08-21\src\sections\03-wh-questions.html
 D:\vsprojects\ChatExport_2026-08-21\src\sections\04-tenses.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\05-tense-signals.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\06-verb-forms.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\07-verb-ing.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\08-used-to-modals.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\09-articles-quantity.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\10-prepositions.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\11-verb-preposition-patterns.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\12-comparison.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\13-adverbs.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\14-additional-grammar.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\15-tenses-table.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\16-choice-tree.html
-D:\vsprojects\ChatExport_2026-08-21\src\sections\17-compact-grammar.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\05-past-continuous.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\06-tense-signals.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\07-verb-forms.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\08-verb-ing.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\09-used-to-modals.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\10-articles-quantity.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\11-prepositions.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\12-verb-preposition-patterns.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\13-comparison.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\14-adverbs.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\15-additional-grammar.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\16-tenses-table.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\17-choice-tree.html
+D:\vsprojects\ChatExport_2026-08-21\src\sections\18-compact-grammar.html
 ```
 
-Section order: sentence basics and questions (1–3) → verbs (4–8) → nouns and prepositions (9–11) → description (12–14) → review pages (15–17). Keep review pages at the end; place a new topic next to related topics, not after the review pages.
+Section order: sentence basics and questions (1–3) → verbs (4–9) → nouns and prepositions (10–12) → description (13–15) → review pages (16–18). Keep review pages at the end; place a new topic next to related topics, not after the review pages.
 
 Build and validation scripts:
 
@@ -121,7 +122,7 @@ Only the following topics are allowed:
 
 - word order and parts of speech;
 - `to be`, questions, and negations;
-- Present Simple, Present Continuous, Past Simple, Present Perfect;
+- Present Simple, Present Continuous, Past Simple, Past Continuous, Present Perfect;
 - future `will` and `be going to`;
 - verb forms `V1 / V2 / V3 / V-ing` and irregular verbs;
 - articles, `some / any / much / many`;
@@ -144,7 +145,7 @@ Only the following topics are allowed:
 
 ### `used to` rule
 
-The complete standalone `used to` block exists only in `src\sections\08-used-to-modals.html`. Other sections may contain only short cross-references without repeating the rule.
+The complete standalone `used to` block exists only in `src\sections\09-used-to-modals.html`. Other sections may contain only short cross-references without repeating the rule.
 
 ## 5. Forbidden content and resources
 
@@ -162,7 +163,7 @@ Before finishing, check both the generated HTML and the final PDF.
 
 Text must be concise, practical, and suitable for A1–A2 learners. The preferred block order is: rule → formula → 2–4 examples → common mistake or limitation.
 
-CSS is stored in `src\styles\cheatsheet.css`. Do not change global dimensions or print rules for a single topic. For overflow, use a local section class and be especially careful with sections 6 (`verb-forms`) and 9 (`articles-quantity`): they are nearly full. Add `dense-print` to a section's own `<section>` class when it needs the compact three-column layout.
+CSS is stored in `src\styles\cheatsheet.css`. Do not change global dimensions or print rules for a single topic. For overflow, use a local section class and be especially careful with sections 7 (`verb-forms`) and 10 (`articles-quantity`): they are nearly full. Add `dense-print` to a section's own `<section>` class when it needs the compact three-column layout.
 
 Preserve:
 
@@ -202,8 +203,8 @@ If a source image is unreadable or ambiguous, do not guess its contents; ask for
 `tools\validate.ps1` must check:
 
 - that the final HTML exists and is not empty;
-- 18 sections, 17 numbered `h2` headings, and one footer for each section;
-- unique IDs, correct order, and the presence of sections `s1`–`s17`;
+- 19 sections, 18 numbered `h2` headings, and one footer for each section;
+- unique IDs, correct order, and the presence of sections `s1`–`s18`;
 - no images or SVG;
 - no `@import`, external URLs, or debugging code;
 - no standalone `used to` rule in the prepositions section (`data-slug="prepositions"`);

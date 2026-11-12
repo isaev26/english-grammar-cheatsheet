@@ -5,7 +5,7 @@ Personal English grammar reference for A1–A2 learners. The cheatsheet uses sho
 ## Contents
 
 - sentence structure, word order, questions, and negations;
-- Present Simple, Present Continuous, Past Simple, Present Perfect;
+- Present Simple, Present Continuous, Past Simple, Past Continuous, Present Perfect;
 - `will` and `be going to`;
 - Past Simple speaking mode for completed stories;
 - `to be`, `there is / there are`, and subject–verb agreement;
@@ -19,7 +19,7 @@ Personal English grammar reference for A1–A2 learners. The cheatsheet uses sho
 - adverbs of frequency and manner;
 - compact tense tables and a form-selection checklist.
 
-The current PDF contains 18 A4 landscape pages, including the cover.
+The current PDF contains 19 A4 landscape pages, including the cover.
 
 ## Project structure
 
